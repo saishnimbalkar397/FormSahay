@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormSahay - Eligibility Checker</title>
+  <link rel="stylesheet" href="eligibility.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>Check Your Eligibility</h2>
+    <p class="subtitle">Enter your details to find government schemes you qualify for.</p>
+
+    <!-- Form Input Section -->
+    <form id="eligibility-form">
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" required min="1" max="120" placeholder="e.g. 45">
+      </div>
+
+      <div class="form-group">
+        <label for="income">Annual Income (₹)</label>
+        <input type="number" id="income" required min="0" placeholder="e.g. 120000">
+      </div>
+
+      <div class="form-group">
+        <label for="state">State</label>
+        <select id="state">
+          <option value="Maharashtra">Maharashtra</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Karnataka">Karnataka</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="occupation">Occupation</label>
+        <select id="occupation">
+          <option value="farmer">Farmer</option>
+          <option value="student">Student</option>
+          <option value="entrepreneur">Entrepreneur</option>
+          <option value="vendor">Street Vendor</option>
+          <option value="artisan">Artisan</option>
+          <option value="pregnant">Pregnant / Lactating</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="caste">Social Category (Caste)</label>
+        <select id="caste">
+          <option value="general">General / Open</option>
+          <option value="sc">SC</option>
+          <option value="st">ST</option>
+          <option value="obc">OBC</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-btn">Check Schemes</button>
+    </form>
+
+    <!-- Results Section -->
+    <div id="results-section">
+      <h3>Eligible Schemes:</h3>
+      <div id="results-container">
+        <p class="placeholder-text">Submit the form to see your matches.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="eligibilityEngine.js"></script>
+</body>
+</html>

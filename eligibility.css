@@ -1,0 +1,144 @@
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f7f6;
+  color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Container Styling */
+.container {
+  background: #ffffff;
+  width: 100%;
+  max-width: 600px;
+  padding: 35px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Styling */
+.container h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1a2b4c;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
+/* Form Group Layout */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+/* Inputs and Select Fields */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #334155;
+  transition: all 0.3s ease;
+}
+
+input[type="number"]::placeholder {
+  color: #94a3b8;
+}
+
+/* Focus States */
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #1a2b4c;
+  box-shadow: 0 0 0 3px rgba(26, 43, 76, 0.1);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #1a2b4c;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #121e36;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Results Section */
+#results-section {
+  margin-top: 30px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 20px;
+}
+
+#results-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a2b4c;
+  margin-bottom: 12px;
+}
+
+#results-container {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.placeholder-text {
+  font-size: 14px;
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .container h2 {
+    font-size: 22px;
+  }
+}
