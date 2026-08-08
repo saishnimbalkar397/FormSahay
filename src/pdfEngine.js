@@ -8,6 +8,13 @@ let lastFontInfo = { loaded: false, name: null, supportsDevanagari: false };
 const DEVANAGARI_RE = /[\u0900-\u097F]/;
 const SHOW_FIELD_BOUNDING_BOXES = false;
 
+function resolvePublicAssetUrl(assetPath) {
+  if (!assetPath || /^(?:https?:|blob:|data:)/i.test(assetPath)) return assetPath;
+
+  const base = import.meta.env.BASE_URL || '/';
+  return `${base.replace(/\/$/, '/')}${String(assetPath).replace(/^\/+/, '')}`;
+}
+
 async function loadDevanagariFont(pdfDoc) {
   if (!pdfDoc) return null;
 
@@ -19,9 +26,8 @@ async function loadDevanagariFont(pdfDoc) {
   }
 
   const fontUrls = [
-    '/fonts/NotoSansDevanagari-Regular.ttf',
-    '/NotoSansDevanagari-Regular.ttf',
-    './fonts/NotoSansDevanagari-Regular.ttf',
+    resolvePublicAssetUrl('/fonts/NotoSansDevanagari-Regular.ttf'),
+    resolvePublicAssetUrl('/NotoSansDevanagari-Regular.ttf'),
   ];
 
   let bytes = null;
@@ -252,7 +258,8 @@ export async function generateFormPDF(scheme, questions, formData) {
 
     if (scheme.pdf_template_url) {
       try {
-        const existingPdfBytes = await fetch(scheme.pdf_template_url).then(res => {
+        const templateUrl = resolvePublicAssetUrl(scheme.pdf_template_url);
+        const existingPdfBytes = await fetch(templateUrl).then(res => {
           if (!res.ok) throw new Error(`HTTP error ${res.status}`);
           return res.arrayBuffer();
         });

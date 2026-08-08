@@ -13,6 +13,7 @@ let selectedLanguage = 'mr-IN'; // 'mr-IN' (Marathi) or 'hi-IN' (Hindi)
 let formData = {};
 let isListening = false;
 let currentPdfBlobUrl = null;
+let pdfPreviewRequestId = 0;
 let autoReadEnabled = true; // Auto-read questions by default
 
 // DOM Elements
@@ -349,8 +350,20 @@ function setMicState(listening) {
 // 7. Update Live PDF Preview & Save Blob URL
 async function updateLivePDFPreview() {
   if (!activeScheme) return;
+  const requestId = ++pdfPreviewRequestId;
   try {
     const pdfUrl = await generateFormPDF(activeScheme, currentQuestions, formData);
+
+    // Typing and speech recognition can trigger several renders in quick
+    // succession. Only the newest render may replace the preview.
+    if (requestId !== pdfPreviewRequestId) {
+      URL.revokeObjectURL(pdfUrl);
+      return;
+    }
+
+    if (currentPdfBlobUrl) {
+      URL.revokeObjectURL(currentPdfBlobUrl);
+    }
     currentPdfBlobUrl = pdfUrl;
     pdfPreviewIframe.src = pdfUrl;
   } catch (err) {
