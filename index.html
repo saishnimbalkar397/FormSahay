@@ -1,129 +1,144 @@
- <!DOCTYPE html>
-<html lang="mr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FormSahay (फॉर्मसहाय) - AI-powered, voice-first web application for assisted digital government welfare applications in Hindi and Marathi.">
-  <title>FormSahay (फॉर्मसहाय) | Voice-First GovTech Assistant</title>
+  <meta name="description" content="FormSahay - Official Portal for Government Welfare Schemes Application & Assistance">
+  <title>FormSahay | Welfare Schemes Assistant Portal</title>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
-  <!-- Top Navbar -->
+  <!-- Header Navigation -->
   <header class="app-header">
     <div class="brand-container">
-      <span class="brand-logo">FormSahay</span>
-      
+      <span class="brand-logo">📋 FormSahay</span>
+      <span class="brand-badge">OFFICIAL PORTAL</span>
     </div>
     <div class="header-controls">
-      
-      <button id="btn-auto-read-toggle" class="btn-preset auto-read-enabled" title="Toggle auto-read questions">
-        🔊 Auto-Read: ON
-      </button>
+      <button id="btn-lang-toggle" class="lang-toggle-btn">🌐 <span id="current-lang-text">English / हिंदी</span></button>
       <button id="btn-preset-modal" class="btn-preset">CHECK ELIGIBILITY</button>
-      <button id="btn-lang-toggle" class="lang-toggle-btn">🌐 <span id="current-lang-text">मराठी (Marathi)</span></button>
     </div>
   </header>
 
-  <!-- Main Application Container -->
+  <!-- Main Application -->
   <main class="container">
 
-    <!-- SCREEN 1: SCHEME SELECTION DASHBOARD -->
+    <!-- SCREEN 1: DASHBOARD -->
     <section id="screen-dashboard">
-      <h1 class="hero-title">सरकारी योजना अर्ज सहाय्यक (Welfare Schemes)</h1>
-      <p class="hero-subtitle">Select a government scheme below to initiate the conversational voice-guided form filling.</p>
-
-      <div id="schemes-grid" class="schemes-grid">
-        <!-- Scheme cards rendered dynamically via JS -->
+      
+      <!-- Portal Badge -->
+      <div class="portal-badge">
+        <span class="portal-badge-icon">🏛️</span>
+        <span class="portal-badge-text">Official Portal of India</span>
       </div>
+
+      <!-- Hero Title -->
+      <h1 class="hero-title">
+        सरकारी योजना अर्ज सहाय्यक
+        <br>
+        <span style="font-size: 0.8em; color: #666; font-weight: 400;">Welfare Schemes Assistant</span>
+      </h1>
+
+      <!-- Hero Subtitle -->
+      <p class="hero-subtitle">
+        Select a government scheme below to initiate the secure, conversational voice-guided form filling service. 
+        Designed for accessibility and ease of use.
+      </p>
+
+      <!-- Schemes Grid -->
+      <div id="schemes-grid" class="schemes-grid">
+        <!-- Dynamically populated via JavaScript -->
+      </div>
+
+      <!-- Footer Help Section -->
+      <div class="footer-help">
+        <div class="help-text">
+          <span class="help-icon">👨‍💼</span>
+          <div>
+            <strong>Need Assistance?</strong><br>
+            Contact the national helpline for technical support during form submission.
+          </div>
+        </div>
+        <a href="#" class="help-link">View Knowledge Base →</a>
+      </div>
+
     </section>
 
-    <!-- SCREEN 2: SPLIT VOICE & PDF STUDIO -->
+    <!-- SCREEN 2: FORM STUDIO -->
     <section id="screen-studio" class="hidden">
       
       <div class="studio-layout">
         
-        <!-- LEFT COLUMN: Voice Controller Panel -->
+        <!-- LEFT: Voice Control Panel -->
         <div class="voice-panel">
           <div>
+            <!-- Step Indicator -->
             <div class="step-indicator-bar">
               <button id="btn-back-dashboard" class="btn-nav">← Change Scheme</button>
               <span id="step-pill" class="step-pill">Question 1 of 7</span>
             </div>
 
-            <!-- Question Prompt Display -->
+            <!-- Question Prompt -->
             <div class="prompt-box">
               <div id="prompt-mr" class="prompt-text-mr">कृपया अर्जदाराचे पूर्ण नाव सांगा.</div>
-              <div id="prompt-en" class="prompt-text-en">Full Name of Applicant</div>
+              <div id="prompt-en" class="prompt-text-en">Please provide full name of applicant</div>
               
-              <!-- Audio Troubleshooting Info -->
-              <div id="audio-troubleshoot" class="audio-help" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">
+              <!-- Audio Troubleshooting -->
+              <div class="audio-help" style="margin-top: 1rem;">
                 <details>
-                  <summary style="cursor: pointer; color: var(--accent-cyan);">🔧 Can't hear audio? Click for help</summary>
-                  <div style="margin-top: 8px; line-height: 1.4;">
+                  <summary>🔧 Can't hear audio? Click for help</summary>
+                  <div style="margin-top: 0.75rem; line-height: 1.4;">
                     <strong>Common fixes:</strong><br>
                     • Check system volume & browser audio settings<br>
-                    • Try Google Chrome or Microsoft Edge browser<br>
-                    • Disable browser extensions that might block audio<br>
+                    • Try Google Chrome or Microsoft Edge<br>
+                    • Disable browser extensions that block audio<br>
                     • Restart browser and refresh page<br>
-                    • Check Windows audio mixer for browser audio<br>
-                    • Install native language voices in Windows Settings<br>
-                    <button id="btn-force-read-test" class="btn-nav" style="margin-top: 10px; font-size: 0.8rem;">
-                      🔊 Force Read Current Question
-                    </button>
+                    • Install language voices in system settings<br>
                   </div>
                 </details>
               </div>
             </div>
 
-            <!-- Microphone Interactive Pulse Section -->
+            <!-- Microphone Section -->
             <div class="mic-section">
-              <button id="btn-mic" class="mic-button" title="Click to speak">
-                🎙️
-              </button>
-              <div id="mic-status-text" style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+              <button id="btn-mic" class="mic-button" title="Click to speak">🎙️</button>
+              <div id="mic-status-text" class="mic-status-text">
                 Click Mic to Speak / बोलावयासाठी माईकवर क्लिक करा
               </div>
               <div id="transcript-preview" class="transcript-preview">
-                <!-- Spoken text streams here in real time -->
+                <!-- Real-time transcript appears here -->
               </div>
             </div>
 
-
-
-
-            <!-- Touch Safety Net Fallback UI -->
+            <!-- Fallback Text Input -->
             <div class="fallback-section">
-              <div class="fallback-title">Safety Net Override / सुधारात्मक इनपुट</div>
+              <div class="fallback-title">Manual Entry / हस्तलेखन प्रविष्टी</div>
               <div id="fallback-container">
-                <!-- Dynamically rendered text input, options, or numpad -->
-                <input type="text" id="input-fallback" class="input-fallback" placeholder="Type or correct response here...">
+                <input type="text" id="input-fallback" class="input-fallback" placeholder="Type answer here...">
               </div>
             </div>
           </div>
 
-          <!-- Bottom Action Controls -->
+          <!-- Bottom Action Buttons -->
           <div class="studio-actions">
             <button id="btn-prev-step" class="btn-nav">← Previous</button>
-            <button id="btn-relisten" class="btn-nav">🔊 Re-listen Question</button>
+            <button id="btn-relisten" class="btn-nav">🔊 Re-listen</button>
             <button id="btn-next-step" class="btn-nav btn-confirm">Confirm & Next →</button>
           </div>
-
         </div>
 
-        <!-- RIGHT COLUMN: Live PDF Preview Canvas -->
+        <!-- RIGHT: PDF Preview Panel -->
         <div class="pdf-panel">
           <div class="pdf-header">
             <div>
-              <h3 style="font-size: 1.1rem; color: white;">Live PDF Document Preview</h3>
-              <span style="font-size: 0.8rem; color: var(--primary-emerald);">● Updating client-side via pdf-lib</span>
+              <h3>Live Document Preview</h3>
+              <span style="font-size: 0.8rem; color: #999;">● Auto-updating via pdf-lib</span>
             </div>
-            <button id="btn-download-pdf" class="btn-nav btn-confirm" style="padding: 0.5rem 1rem;">
-              🖨️ Print / Download Form
+            <button id="btn-download-pdf" class="btn-nav btn-confirm" style="padding: 0.6rem 1rem; font-size: 0.9rem;">
+              🖨️ Download PDF
             </button>
           </div>
-
-          <!-- PDF Preview Iframe -->
           <iframe id="pdf-preview-iframe" class="pdf-preview-frame" src="about:blank"></iframe>
         </div>
 
@@ -133,21 +148,21 @@
 
   </main>
 
-  <!-- DEMO PRESETS MODAL -->
+  <!-- Demo Presets Modal -->
   <div id="modal-presets" class="modal-overlay hidden">
     <div class="modal-content">
       <h3 class="modal-title">⚡ Hackathon Judge Demo Presets</h3>
-      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">
-        Click any profile below to instantly pre-populate the entire form state without waiting for mic input during live demo evaluation.
+      <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">
+        Click any profile below to instantly pre-populate the entire form state.
       </p>
       <div id="preset-list" class="preset-list">
-        <!-- Preset items rendered via JS -->
+        <!-- Populated via JavaScript -->
       </div>
       <button id="btn-close-modal" class="btn-nav" style="width: 100%;">Close</button>
     </div>
   </div>
 
-  <!-- Entry Script -->
+  <!-- Main Application Entry Point -->
   <script type="module" src="/main.js"></script>
 
 </body>
