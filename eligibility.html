@@ -3,81 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FormSahay - Eligibility Checker</title>
-  <link rel="stylesheet" href="eligibility.css">
+  <meta name="description" content="FormSahay - Check Your Eligibility for Government Welfare Schemes">
+  <title>FormSahay | Eligibility Checker</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/eligibility.css">
 </head>
 <body>
 
-  <div class="container">
-    <h2>Check Your Eligibility</h2>
-    <p class="subtitle">Enter your details to find government schemes you qualify for.</p>
-
-    <!-- Form Input Section -->
-    <form id="eligibility-form">
-      <div class="form-group">
-        <label for="age">Age</label>
-        <input type="number" id="age" required min="1" max="120" placeholder="e.g. 45">
-      </div>
-
-      <div class="form-group">
-        <label for="income">Annual Income (₹)</label>
-        <input type="number" id="income" required min="0" placeholder="e.g. 120000">
-      </div>
-
-      <div class="form-group">
-        <label for="state">State</label>
-        <select id="state">
-          <option value="Maharashtra">Maharashtra</option>
-          <option value="Delhi">Delhi</option>
-          <option value="Karnataka">Karnataka</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="occupation">Occupation</label>
-        <select id="occupation">
-          <option value="farmer">Farmer</option>
-          <option value="student">Student</option>
-          <option value="entrepreneur">Entrepreneur</option>
-          <option value="vendor">Street Vendor</option>
-          <option value="artisan">Artisan</option>
-          <option value="pregnant">Pregnant / Lactating</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="caste">Social Category (Caste)</label>
-        <select id="caste">
-          <option value="general">General / Open</option>
-          <option value="sc">SC</option>
-          <option value="st">ST</option>
-          <option value="obc">OBC</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <select id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <button type="submit" class="submit-btn">Check Schemes</button>
-    </form>
-
-    <!-- Results Section -->
-    <div id="results-section">
-      <h3>Eligible Schemes:</h3>
-      <div id="results-container">
-        <p class="placeholder-text">Submit the form to see your matches.</p>
-      </div>
+  <!-- Header Navigation -->
+  <header class="app-header">
+    <div class="brand-container">
+      <span class="brand-logo">📋 FormSahay</span>
+      <span class="brand-badge">OFFICIAL PORTAL</span>
     </div>
-  </div>
+    <div class="header-controls">
+      <button id="btn-back-home" class="lang-toggle-btn" style="background: rgba(255, 255, 255, 0.15);">← Back to Home</button>
+      <button id="btn-lang-toggle" class="lang-toggle-btn">🌐 <span id="current-lang-text">English / हिंदी</span></button>
+    </div>
+  </header>
 
-  <script src="eligibilityEngine.js"></script>
+  <!-- Main Content -->
+  <main class="container eligibility-container">
+
+    <!-- Portal Badge -->
+    <div class="portal-badge">
+      <span class="portal-badge-icon">✅</span>
+      <span class="portal-badge-text">Find Your Eligible Schemes</span>
+    </div>
+
+    <!-- Page Title -->
+    <h1 class="eligibility-title">
+      सरकारी योजना पात्रता जांच
+      <br>
+      <span style="font-size: 0.7em; color: #666; font-weight: 400;">Government Schemes Eligibility Checker</span>
+    </h1>
+
+    <!-- Page Description -->
+    <p class="eligibility-subtitle">
+      Enter your personal details below to discover which government welfare schemes you are eligible for. 
+      This tool helps you find assistance programs tailored to your profile.
+    </p>
+
+    <!-- Main Content Grid -->
+    <div class="eligibility-grid">
+
+      <!-- Left Column: Form -->
+      <div class="form-section">
+        <h2 class="form-title">📋 Your Details</h2>
+
+        <form id="eligibility-form" class="eligibility-form">
+          
+          <!-- Age Input -->
+          <div class="form-group">
+            <label for="age">
+              <span class="label-icon">👤</span>
+              <span class="label-text">Age (Years)</span>
+            </label>
+            <input type="number" id="age" required min="1" max="120" placeholder="e.g., 45" class="form-input">
+          </div>
+
+          <!-- Income Input -->
+          <div class="form-group">
+            <label for="income">
+              <span class="label-icon">💰</span>
+              <span class="label-text">Annual Income (₹)</span>
+            </label>
+            <input type="number" id="income" required min="0" placeholder="e.g., 300000" class="form-input">
+          </div>
+
+          <!-- State Select -->
+          <div class="form-group">
+            <label for="state">
+              <span class="label-icon">📍</span>
+              <span class="label-text">State</span>
+            </label>
+            <select id="state" class="form-select">
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Occupation Select -->
+          <div class="form-group">
+            <label for="occupation">
+              <span class="label-icon">💼</span>
+              <span class="label-text">Occupation</span>
+            </label>
+            <select id="occupation" class="form-select">
+              <option value="farmer">Farmer</option>
+              <option value="student">Student</option>
+              <option value="entrepreneur">Entrepreneur / Business Owner</option>
+              <option value="vendor">Street Vendor</option>
+              <option value="artisan">Artisan / Craftsperson</option>
+              <option value="pregnant">Pregnant / Lactating Mother</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Social Category (Caste) Select -->
+          <div class="form-group">
+            <label for="caste">
+              <span class="label-icon">🏛️</span>
+              <span class="label-text">Social Category</span>
+            </label>
+            <select id="caste" class="form-select">
+              <option value="general">General / Open</option>
+              <option value="sc">Scheduled Caste (SC)</option>
+              <option value="st">Scheduled Tribe (ST)</option>
+              <option value="obc">Other Backward Class (OBC)</option>
+            </select>
+          </div>
+
+          <!-- Gender Select -->
+          <div class="form-group">
+            <label for="gender">
+              <span class="label-icon">⚧️</span>
+              <span class="label-text">Gender</span>
+            </label>
+            <select id="gender" class="form-select">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="submit-btn">
+            🔍 Check Eligible Schemes
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Results -->
+      <div class="results-section">
+        <h2 class="results-title">📊 Your Matching Schemes</h2>
+
+        <div id="results-container" class="results-container">
+          <div class="results-placeholder">
+            <div class="placeholder-icon">📝</div>
+            <p class="placeholder-text">Fill the form and click "Check Eligible Schemes" to discover programs for you.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="eligibility-footer">
+    <div class="footer-content">
+      <p>💡 <strong>Tip:</strong> For accurate results, please provide your correct information.</p>
+      <p>📞 For more information, visit the official government portal or contact your nearest Maha Seva Kendra.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/eligibilityEngine.js"></script>
+  <script>
+    // Back to Home Button Handler
+    document.getElementById('btn-back-home').addEventListener('click', function() {
+      window.location.href = '/';
+    });
+  </script>
+
 </body>
 </html>
