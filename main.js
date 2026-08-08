@@ -521,6 +521,7 @@ function setupEventListeners() {
     }
   });
 
+  if (btnAutoReadToggle) {
   btnAutoReadToggle.addEventListener('click', () => {
     autoReadEnabled = !autoReadEnabled;
     btnAutoReadToggle.innerHTML = autoReadEnabled 
@@ -530,6 +531,7 @@ function setupEventListeners() {
       ? 'btn-preset auto-read-enabled' 
       : 'btn-preset auto-read-disabled';
   });
+  }
 
   // Simple TTS test (null-guarded — element may not exist in HTML)
   if (btnTestSimpleTts) {
@@ -661,8 +663,12 @@ function setupEventListeners() {
     }
   });
 
-  btnPresetModal.addEventListener('click', () => modalPresets.classList.remove('hidden'));
-  btnCloseModal.addEventListener('click', () => modalPresets.classList.add('hidden'));
+  if (btnPresetModal) {
+    btnPresetModal.addEventListener('click', () => modalPresets.classList.remove('hidden'));
+  }
+  if (btnCloseModal) {
+    btnCloseModal.addEventListener('click', () => modalPresets.classList.add('hidden'));
+  }
 
   if (btnAskAI) {
     btnAskAI.addEventListener('click', handleAskAIClick);

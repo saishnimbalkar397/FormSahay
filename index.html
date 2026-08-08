@@ -17,7 +17,7 @@
     </div>
     <div class="header-controls">
       <button id="btn-lang-toggle" class="lang-toggle-btn">🌐 <span id="current-lang-text">English / हिं��ी</span></button>
-      <button id="btn-check-eligibility" class="btn-preset">CHECK ELIGIBILITY</button>
+      <button id="btn-check-eligibility" class="btn-preset" target="_blank" rel="noopener noreferrer">CHECK ELIGIBILITY</button>
     </div>
   </header>
 
@@ -159,7 +159,7 @@
   <!-- Check Eligibility Button Handler -->
   <script>
     document.getElementById('btn-check-eligibility').addEventListener('click', function() {
-      window.location.href = '/eligibility.html';
+      window.open('/eligibility.html', '_blank', 'noopener,noreferrer');
     });
   </script>
 
