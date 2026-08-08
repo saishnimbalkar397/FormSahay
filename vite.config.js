@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
+  // GitHub Pages serves this project from /FormSahay/, not the domain root.
+  base: '/FormSahay/',
   build: {
     rollupOptions: {
       input: {
